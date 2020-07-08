@@ -120,7 +120,7 @@
                     </div>
 
                     <div class="card-body">
-                        <a href="" class="btn btn-sm btn-success">Tambah Data</a>
+                        <a href="/category/create" class="btn btn-sm btn-success">Tambah Data</a>
                     </div>
 
                     <table class="table datatable-basic">
@@ -134,11 +134,14 @@
                         <tbody>
                             <% categories.forEach(function(category) { %>
                             <tr>
-                                <td><%= category.id %></td>
+                                <td><%= counter += 1 %></td>
                                 <td><%= category.name %></td>
                                 <td style="white-space: nowrap;">
-                                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                                    <a href="/category/<%= category.id %>" class="btn btn-sm btn-warning">Edit</a>
+                                    <form action="/category/<%= category.id %>?_method=DELETE" method="POST" style="display: inline;">
+                                        <input type="hidden" value="DELETE" name="_method">
+                                        <button class="btn btn-sm btn-danger" type="submit">Hapus</button>
+                                    </form>
                                 </td>
                             </tr>
                             <% }); %>

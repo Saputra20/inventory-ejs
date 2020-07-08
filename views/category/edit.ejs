@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partial/head %>
+</head>
+
+<body>
+    <!-- Main navbar -->
+    <div class="navbar navbar-expand-md navbar-dark">
+        <div class="navbar-brand">
+            <a href="index.html" class="d-inline-block">
+                <img src="/global_assets/images/logo_light.png" alt="">
+            </a>
+        </div>
+
+        <div class="d-md-none">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+                <i class="icon-tree5"></i>
+            </button>
+            <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+                <i class="icon-paragraph-justify3"></i>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-mobile">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
+                        <i class="icon-paragraph-justify3"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <span class="navbar-text ml-md-3 mr-md-auto">
+                <span class="badge bg-success">Online</span>
+            </span>
+
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown dropdown-user">
+                    <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
+                        <img src="/global_assets/images/placeholders/placeholder.jpg" class="rounded-circle" alt="">
+                        <span><%= name %></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <form action="/authentication/logout" method="POST">
+                            <button class="dropdown-item"><i class="icon-switch2"></i> Logout</button>
+                        </form>
+                        <!-- <a href="/login" class="dropdown-item"><i class="icon-switch2"></i> Logout</a> -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /main navbar -->
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md">
+
+            <!-- Sidebar mobile toggler -->
+            <div class="sidebar-mobile-toggler text-center">
+                <a href="#" class="sidebar-mobile-main-toggle">
+                    <i class="icon-arrow-left8"></i>
+                </a>
+                Navigation
+                <a href="#" class="sidebar-mobile-expand">
+                    <i class="icon-screen-full"></i>
+                    <i class="icon-screen-normal"></i>
+                </a>
+            </div>
+            <!-- /sidebar mobile toggler -->
+
+            <!-- sidebar -->
+            <% include ../partial/sidebar %>
+            <!-- end sidebar -->
+
+        </div>
+        <!-- /main sidebar -->
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+            <!-- Page header -->
+            <div class="page-header page-header-light">
+                <div class="page-header-content header-elements-md-inline">
+                    <div class="page-title d-flex">
+                        <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Home</span> -
+                            Edit Data</h4>
+                        <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+                    </div>
+                </div>
+
+                <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+                    <div class="d-flex">
+                        <div class="breadcrumb">
+                            <a href="#" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+                            <a href="/category" class="breadcrumb-item"> Kategori Barang</a>
+                            <span class="breadcrumb-item active">Edit Data</span>
+                        </div>
+
+                        <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- /page header -->
+
+            <!-- Content area -->
+            <div class="content">
+                <div class="card">
+                    <div class="card-header header-elements-inline">
+                        <h5 class="card-title">Edit Data Kategori</h5>
+                        <div class="header-elements">
+                            <div class="list-icons">
+                                <a class="list-icons-item" data-action="collapse"></a>
+                                <a class="list-icons-item" data-action="remove"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <form action="/category/<%= category.id %>?_method=PUT" method="POST" autocomplete="off">
+							<fieldset class="mb-3">
+								<legend class="text-uppercase font-size-sm font-weight-bold">DATA KATEGORI BARANG</legend>
+
+								<div class="form-group row">
+									<label class="col-form-label col-lg-2">Kategori Barang</label>
+									<div class="col-lg-10">
+                                        <input type="text" class="form-control" name="name" value="<%= category.name %>">
+									</div>
+								</div>
+
+							</fieldset>
+
+							<div class="text-right">
+								<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+							</div>
+						</form>
+                    </div>
+                </div>
+            </div>
+            <!-- /content area -->
+
+            <!-- Footer -->
+            <% include ../partial/footer %>
+            <!-- /footer -->
+
+        </div>
+    </div>
+    <!-- /page content -->
+</body>
+
+</html>
