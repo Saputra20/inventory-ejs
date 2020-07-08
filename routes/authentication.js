@@ -13,7 +13,8 @@ router.get('/login', function (req, res, next) {
 router.post('/login', function (req, res, next) {
     var username = req.body.username
     var password = req.body.password
-
+    console.log(password);
+    
     models.User.findOne({
         where: {
             username: username,
@@ -25,14 +26,7 @@ router.post('/login', function (req, res, next) {
                 message: 'Incorect username'
             });
         }
-        if (!users.password === password) {
-            res.json({
-                message: 'Incorect password'
-            });
-        }
-        res.json({
-            users
-        });
+        res.redirect('/home'); 
     }).catch(err => console.log(err));
 });
 
