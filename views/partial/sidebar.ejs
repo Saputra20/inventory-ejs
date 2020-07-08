@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="media-body">
-                    <div class="media-title font-weight-semibold"></div>
+                    <div class="media-title font-weight-semibold"><%= name %></div>
                     <div class="font-size-xs opacity-50">
                         <i class="icon-pin font-size-sm"></i> &nbsp;Bandung, IDN
                     </div>
@@ -35,7 +35,7 @@
                     title="Main"></i>
             </li>
             <li class="nav-item">
-                <a href="index.html" class="nav-link active">
+                <a href="/home" class="nav-link <% if (page === 'dashboard') { %>active<% } %>">
                     <i class="icon-home4"></i>
                     <span>
                         Dashboard
@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="index.html" class="nav-link">
+                <a href="/submission" class="nav-link <% if (page === 'submission') { %>active<% } %>">
                     <i class="icon-files-empty"></i>
                     <span>
                         Pengajuan Barang
@@ -51,7 +51,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="index.html" class="nav-link">
+                <a href="/major" class="nav-link <% if (page === 'major') { %>active<% } %>">
                     <i class="icon-store"></i>
                     <span>
                         Master Barang
@@ -59,7 +59,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="index.html" class="nav-link">
+                <a href="/category" class="nav-link <% if (page === 'category') { %>active<% } %>">
                     <i class="icon-pencil5"></i>
                     <span>
                         Kategori Barang
@@ -67,7 +67,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="index.html" class="nav-link">
+                <a href="/major/create" class="nav-link <% if (page === 'major-create') { %>active<% } %>">
                     <i class="icon-cart-add2"></i>
                     <span>
                         Barang Masuk

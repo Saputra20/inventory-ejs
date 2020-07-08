@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -8,6 +9,9 @@ var indexRouter = require('./routes/index');
 var homeRouter = require('./routes/home');
 var usersRouter = require('./routes/users');
 var authenticationRoute = require('./routes/authentication');
+var categoryRouter = require('./routes/category');
+var majorRouter = require('./routes/major')
+var submissionRouter = require('./routes/submission')
 
 var app = express();
 
@@ -15,6 +19,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(session({secret: 'tubes',saveUninitialized: true,resave: true}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,6 +30,9 @@ app.use('/', indexRouter);
 app.use('/home', homeRouter);
 app.use('/users', usersRouter);
 app.use('/authentication', authenticationRoute);
+app.use('/category' , categoryRouter);
+app.use('/major' , majorRouter);
+app.use('/submission' , submissionRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
