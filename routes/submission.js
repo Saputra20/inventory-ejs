@@ -4,14 +4,15 @@ var models = require('../models/index');
 
 router.get('/', function (req, res, next) {
     sess = req.session
-    // if(sess.username){
-    res.render('submission', {
-        name: sess.name,
-        page: 'submission'
-    })
-    res.end();
-    // }
-    // res.redirect('/')
+    if (sess.username) {
+        res.render('submission', {
+            name: sess.name,
+            page: 'submission'
+        })
+        res.end();
+    } else {
+        res.redirect('/')
+    }
 });
 
 router.post('/', function (req, res, next) {

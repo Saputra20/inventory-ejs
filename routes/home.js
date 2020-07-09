@@ -1,19 +1,24 @@
 var express = require('express');
 var router = express.Router();
+var models = require('../models/index');
 
-var sess ;
+var sess;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   sess = req.session
-  if(sess.username){
-    res.render('index' , {
-      name: sess.name,
-      page: 'dashboard'
-    });
-    res.end()
+  if (sess.username) {
+    models.Major.findAll().then(majors => {
+      res.render('index', {
+        name: sess.name,
+        page: 'dashboard',
+        majors : majors
+      });
+      res.end()
+    }).catch(err => console.log(err));
+  }else{
+    res.redirect('/')
   }
-  res.redirect('/')
 });
 
 module.exports = router;

@@ -5,7 +5,7 @@ var models = require('../models/index');
 
 router.get('/itemin', function (req, res, next) {
     sess = req.session
-    // if(sess.username){
+    if(sess.username){
     models.ItemHistory.findAll({
         include: 'category',
         where:{
@@ -21,8 +21,9 @@ router.get('/itemin', function (req, res, next) {
         })
         res.end();
     }).catch(err => console.log(err));
-    // }
-    // res.redirect('/')
+    }else{
+        res.redirect('/')
+    }
 });
 
 
