@@ -88,7 +88,7 @@
                 <div class="page-header-content header-elements-md-inline">
                     <div class="page-title d-flex">
                         <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Home</span> -
-                            Barang Masuk</h4>
+                            History Barang Masuk</h4>
                         <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                     <div class="d-flex">
                         <div class="breadcrumb">
                             <a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-                            <span class="breadcrumb-item active">Barang Masuk</span>
+                            <span class="breadcrumb-item active">History Barang Masuk</span>
                         </div>
 
                         <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -110,7 +110,7 @@
             <div class="content">
                 <div class="card">
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Barang Masuk</h5>
+                        <h5 class="card-title">History Barang Masuk</h5>
                         <div class="header-elements">
                             <div class="list-icons">
                                 <a class="list-icons-item" data-action="collapse"></a>
@@ -120,52 +120,30 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="/major" method="POST" autocomplete="off">
-                            <fieldset class="mb-3">
-                                <legend class="text-uppercase font-size-sm font-weight-bold">DATA BARANG
-                                </legend>
-
-                                <div class="form-group row">
-                                    <label class="col-form-label col-lg-2">Nama Barang</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" class="form-control" name="name" placeholder="Masukan Nama Barang">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-form-label col-lg-2">Kategori Barang</label>
-                                    <div class="col-lg-10">
-                                        <select class="custom-select" name="category_id">
-                                            <option value="" selected disabled>Pilih Kategori Barang</option>
-                                            <% categories.forEach(function(category) { %>
-                                            <option value="<%= category.id %>"><%= category.name %></option>
-                                            <% }); %>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-form-label col-lg-2">Stok Barang</label>
-                                    <div class="col-lg-10">
-                                        <input type="number" min="1" class="form-control" name="stok" placeholder="Masukan Stok Barang">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-form-label col-lg-2">Tanggal Masuk</label>
-                                    <div class="col-lg-10">
-                                        <input type="date" class="form-control" name="date">
-                                    </div>
-                                </div>
-
-                            </fieldset>
-
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-primary">Simpan <i
-                                        class="icon-paperplane ml-2"></i></button>
-                            </div>
-                        </form>
                     </div>
+
+                    <table class="table datatable-basic">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">No</th>
+                                <th style="width: 20%;">Nama Barang</th>
+                                <th style="width: 20%;">Kategori Barang</th>
+                                <th style="width: 20%;">Stok</th>
+                                <th>Tanggal Masuk</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% items.forEach(function(item) { %>
+                            <tr>
+                                <td><%= counter += 1 %></td>
+                                <td><%= item.name %></td>
+                                <td><%= item.category.name %></td>
+                                <td><%= item.stok %></td>
+                                <td><%=  moment(item.date).format( 'YYYY MMMM DD')  %></td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <!-- /content area -->

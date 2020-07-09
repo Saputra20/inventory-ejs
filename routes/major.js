@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
         res.render('major', {
             name: sess.name,
             page: 'major',
-            counter : 0,
+            counter: 0,
             majors: majors
         })
         res.end();
@@ -51,7 +51,15 @@ router.post('/', function (req, res, next) {
                     id: major.id
                 }
             }).then(major => {
-                res.redirect('/major/create')
+                models.ItemHistory.create({
+                    name: req.body.name.toUpperCase(),
+                    category_id: req.body.category_id,
+                    stok: req.body.stok,
+                    date: req.body.date,
+                    status: 1
+                }).then(itemhistory => {
+                    res.redirect('/major/create')
+                }).catch(err => console.log(err));
             }).catch(err => console.log(err));
         } else {
             models.Major.create({

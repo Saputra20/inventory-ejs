@@ -14,6 +14,7 @@ var authenticationRoute = require('./routes/authentication');
 var categoryRouter = require('./routes/category');
 var majorRouter = require('./routes/major')
 var submissionRouter = require('./routes/submission')
+var historyRouter = require('./routes/history')
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/authentication', authenticationRoute);
 app.use('/category' , categoryRouter);
 app.use('/major' , majorRouter);
 app.use('/submission' , submissionRouter);
+app.use('/history' , historyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

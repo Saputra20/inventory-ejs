@@ -74,11 +74,11 @@
                     </span>
                 </a>
             </li>
-            <li class="nav-item nav-item-submenu">
+            <li class="nav-item nav-item-submenu <% if (page === 'itemin') { %>nav-item-open<% } %>">
                 <a href="#" class="nav-link"><i class="icon-clipboard5"></i> <span>History</span></a>
 
-                <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Barang Masuk</a></li>
+                <ul class="nav nav-group-sub" data-submenu-title="Layouts" <% if (page === 'itemin') { %> style ="display: block" <% } %>>
+                    <li class="nav-item"><a href="/history/itemin" class="nav-link <% if (page === 'itemin') { %>active<% } %>">Barang Masuk</a></li>
                     <li class="nav-item"><a href="/layout_2/LTR/default/full/index.html" class="nav-link">Barang
                             Keluar</a>
                     </li>

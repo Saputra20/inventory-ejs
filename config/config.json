@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "saputra",
-    "password": "saputra",
+    "username": "root",
+    "password": "",
     "database": "tubes_inventory",
     "host": "127.0.0.1",
     "dialect": "mysql"
