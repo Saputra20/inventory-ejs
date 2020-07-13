@@ -28,7 +28,7 @@ router.get('/itemin', function (req, res, next) {
 
 router.get('/itemout', function (req, res, next) {
     sess = req.session
-    // if(sess.username){
+    if(sess.username){
     models.ItemOutHistory.findAll({
         include: 'major'
     }).then(items => {
@@ -41,9 +41,9 @@ router.get('/itemout', function (req, res, next) {
         })
         res.end();
     }).catch(err => console.log(err));
-    // }else{
-        // res.redirect('/')
-    // }
+    }else{
+        res.redirect('/')
+    }
 });
 
 

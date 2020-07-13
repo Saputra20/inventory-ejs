@@ -7,8 +7,9 @@ router.get('/', function(req, res, next) {
   if(sess.username){
       res.redirect('/home');
       res.end();
+  }else{
+    res.render('auth');
   }
-  res.render('auth');
 });
 
 module.exports = router;
