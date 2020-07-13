@@ -26,5 +26,25 @@ router.get('/itemin', function (req, res, next) {
     }
 });
 
+router.get('/itemout', function (req, res, next) {
+    sess = req.session
+    // if(sess.username){
+    models.ItemOutHistory.findAll({
+        include: 'major'
+    }).then(items => {
+        res.render('history/itemout', {
+            name: sess.name,
+            page: 'itemout',
+            counter: 0,
+            items: items,
+            moment:  moment
+        })
+        res.end();
+    }).catch(err => console.log(err));
+    // }else{
+        // res.redirect('/')
+    // }
+});
+
 
 module.exports = router;

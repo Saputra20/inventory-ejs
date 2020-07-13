@@ -3,6 +3,13 @@
 
 <head>
     <% include ../partial/head %>
+    <style>
+        .no-border {
+            border: 0;
+            box-shadow: none;
+            background-color: white !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -88,7 +95,7 @@
                 <div class="page-header-content header-elements-md-inline">
                     <div class="page-title d-flex">
                         <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Home</span> -
-                           Daftar Pengajuan Barang</h4>
+                            Detail Pengajuan Barang</h4>
                         <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
                     </div>
                 </div>
@@ -97,7 +104,8 @@
                     <div class="d-flex">
                         <div class="breadcrumb">
                             <a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-                            <span class="breadcrumb-item active">Daftar Pengajuan Barang</span>
+                            <a href="/submission" class="breadcrumb-item"> Daftar Pengajuan Barang</a>
+                            <span class="breadcrumb-item active">Detail Pengajuan Barang</span>
                         </div>
 
                         <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -110,7 +118,7 @@
             <div class="content">
                 <div class="card">
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Daftar Pengajuan Barang</h5>
+                        <h5 class="card-title">Detail Pengajuan Barang</h5>
                         <div class="header-elements">
                             <div class="list-icons">
                                 <a class="list-icons-item" data-action="collapse"></a>
@@ -120,37 +128,51 @@
                     </div>
 
                     <div class="card-body">
-                    </div>
+                        <dl class="row mb-0">
+                            <dt class="col-sm-2">Nama Pengaju</dt>
+                            <dd class="col-sm-10"><%= submission.name %></dd>
 
-                    <table class="table datatable-basic">
-                        <thead>
-                            <tr>
-                                <th style="width: 5%;">No</th>
-                                <th>Nama Pengaju</th>
-                                <th>Alamat</th>
-                                <th>Usia</th>
-                                <th>Perusahaan</th>
-                                <th>Jabatan</th>
-                                <th style="width: 20%;" class="text-center">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% submissions.forEach(function(submission) { %>
-                            <tr>
-                                <td><%= counter += 1 %></td>
-                                <td><%= submission.name %></td>
-                                <td><%= submission.address %></td>
-                                <td><%= submission.age %></td>
-                                <td><%= submission.company %></td>
-                                <td><%= submission.position %></td>
-                                <td style="white-space: nowrap;">
-                                    <a href="/submission/find/<%= submission.id %>" class="btn btn-sm btn-warning">Detail</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                                </td>
-                            </tr>
-                            <% }); %>
-                        </tbody>
-                    </table>
+                            <dt class="col-sm-2">Alamat</dt>
+                            <dd class="col-sm-10"><%= submission.address %></dd>
+
+                            <dt class="col-sm-2">Usia</dt>
+                            <dd class="col-sm-10"><%= submission.age %></dd>
+
+                            <dt class="col-sm-2">Perusahaan</dt>
+                            <dd class="col-sm-10"><%= submission.company %></dd>
+
+                            <dt class="col-sm-2">Jabatan</dt>
+                            <dd class="col-sm-10"><%= submission.position %></dd>
+                        </dl>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="table-item">
+                                <thead>
+                                    <tr>
+                                        <th>Nama Barang</th>
+                                        <th>Jumlah</th>
+                                        <th style="width: 20%;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="static-body">
+                                    <% detailsubmissions.forEach(function(detailsubmission) { %>
+                                    <tr>
+                                        <td><%= detailsubmission.major.name %></td>
+                                        <td><%= detailsubmission.quantity %></td>
+                                        <td style="white-space: nowrap;">
+                                            <form action="/submission/itemOut/<%= detailsubmission.id %>?_method=PUT"
+                                                style="display: inline;" method="POST">
+                                                <input type="hidden" name="name" value="<%= submission.name %>">
+                                                <button type="submit" class="btn btn-sm btn-success">Submit</button>
+                                            </form>
+                                            <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /content area -->
@@ -163,5 +185,7 @@
     </div>
     <!-- /page content -->
 </body>
+<script>
+</script>
 
 </html>

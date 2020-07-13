@@ -88,7 +88,7 @@
                 <div class="page-header-content header-elements-md-inline">
                     <div class="page-title d-flex">
                         <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Home</span> -
-                           Daftar Pengajuan Barang</h4>
+                            History Barang Keluar</h4>
                         <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                     <div class="d-flex">
                         <div class="breadcrumb">
                             <a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-                            <span class="breadcrumb-item active">Daftar Pengajuan Barang</span>
+                            <span class="breadcrumb-item active">History Barang Keluark</span>
                         </div>
 
                         <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -110,7 +110,7 @@
             <div class="content">
                 <div class="card">
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Daftar Pengajuan Barang</h5>
+                        <h5 class="card-title">History Barang Keluar</h5>
                         <div class="header-elements">
                             <div class="list-icons">
                                 <a class="list-icons-item" data-action="collapse"></a>
@@ -126,27 +126,20 @@
                         <thead>
                             <tr>
                                 <th style="width: 5%;">No</th>
-                                <th>Nama Pengaju</th>
-                                <th>Alamat</th>
-                                <th>Usia</th>
-                                <th>Perusahaan</th>
-                                <th>Jabatan</th>
-                                <th style="width: 20%;" class="text-center">Actions</th>
+                                <th style="width: 20%;">Nama Pengaju</th>
+                                <th style="width: 20%;">Nama Barang</th>
+                                <th style="width: 20%;">Jumlah</th>
+                                <th>Tanggal Keluar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% submissions.forEach(function(submission) { %>
+                            <% items.forEach(function(item) { %>
                             <tr>
                                 <td><%= counter += 1 %></td>
-                                <td><%= submission.name %></td>
-                                <td><%= submission.address %></td>
-                                <td><%= submission.age %></td>
-                                <td><%= submission.company %></td>
-                                <td><%= submission.position %></td>
-                                <td style="white-space: nowrap;">
-                                    <a href="/submission/find/<%= submission.id %>" class="btn btn-sm btn-warning">Detail</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                                </td>
+                                <td><%= item.name %></td>
+                                <td><%= item.major.name %></td>
+                                <td><%= item.quantity %></td>
+                                <td><%=  moment(item.date).format( 'YYYY MMMM DD')  %></td>
                             </tr>
                             <% }); %>
                         </tbody>
